@@ -38,9 +38,12 @@ const obj = [
 const Cards = () => {
   return (
     <div className="flex px-4 pb-8 items-start overflow-x-auto">
-      {obj.map((q) => {
+      {obj.map((q, i) => {
         return (
-          <div className="rounded bg-grey-light  flex-no-shrink w-64 p-2 mr-3">
+          <div
+            className="rounded bg-grey-light  flex-no-shrink w-64 p-2 mr-3"
+            key={i}
+          >
             <div className="flex justify-between py-1">
               <h3 className="text-sm">{q.name}</h3>
               <svg
@@ -52,12 +55,18 @@ const Cards = () => {
               </svg>
             </div>
             <div className="text-sm mt-2">
-              {q?.data.map((r) => (
-                <>
-                  <div className="bg-white p-2 rounded mt-1 border-b border-grey cursor-pointer hover:bg-grey-lighter">
-                    {r.name}
-                  </div>
-                </>
+              {q?.data.map((r, idx) => (
+                <div
+                  className="bg-white p-2 rounded mt-1 border-b border-grey cursor-pointer hover:bg-grey-lighter"
+                  key={idx}
+                >
+                  <input
+                    value={r.name}
+                    onChange={(e) => console.log(e.target.value)}
+                    className="focus:outline-none"
+                    contentEditable
+                  />
+                </div>
               ))}
               <p className="mt-3 text-grey-dark">Add a card...</p>
             </div>
