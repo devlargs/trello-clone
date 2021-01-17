@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { ReactSortable } from "react-sortablejs";
 
 const Cards = () => {
   const [obj] = useState([
@@ -65,19 +66,22 @@ const Cards = () => {
               </svg>
             </div>
             <div className="text-sm mt-2">
-              {q?.data.map((r) => (
-                <div
-                  className="bg-white p-2 rounded mt-1 border-b border-grey cursor-pointer hover:bg-grey-lighter"
-                  key={r.id}
-                >
-                  <input
-                    value={r.name}
-                    onChange={(e) => console.log(e.target.value)}
-                    className="focus:outline-none"
-                    contentEditable
-                  />
-                </div>
-              ))}
+              <ReactSortable list={q.data} setList={() => {}} group="shared">
+                {q?.data.map((r) => (
+                  <div
+                    className="bg-white p-2 rounded mt-1 border-b border-grey cursor-pointer hover:bg-grey-lighter"
+                    key={r.id}
+                  >
+                    <input
+                      value={r.name}
+                      onChange={(e) => console.log(e.target.value)}
+                      className="focus:outline-none"
+                      contentEditable
+                      style={{ width: "100px" }}
+                    />
+                  </div>
+                ))}
+              </ReactSortable>
               <p className="mt-3 text-grey-dark">Add a card...</p>
             </div>
           </div>
