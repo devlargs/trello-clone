@@ -9,7 +9,7 @@ const Subheader = () => {
           </li>
           <li>
             <span className="border-l border-blue-lighter px-2 text-sm">
-              Business Name
+              @devlargs
             </span>{" "}
             <span className="rounded-lg bg-blue-light text-xs px-2 py-1">
               Free
