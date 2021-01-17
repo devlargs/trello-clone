@@ -17,7 +17,8 @@
     "react-sortablejs": "^6.0.0",
     "sortablejs": "^1.13.0",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.2",
-    "web-vitals": "^0.2.4"
+    "web-vitals": "^0.2.4",
+    "zustand": "^3.3.1"
   },
   "scripts": {
     "start": "craco start",

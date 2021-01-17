@@ -1,55 +1,12 @@
-import { useState } from "react";
-import { ReactSortable } from "react-sortablejs";
+import { useStore } from "../hooks/useStore";
+import Tasks from "./Tasks";
 
 const Cards = () => {
-  const [obj] = useState([
-    {
-      name: "Category 1",
-      data: [
-        {
-          name: "list 1",
-          rank: 1,
-          id: "1",
-        },
-        {
-          name: "list 2",
-          rank: 2,
-          id: "123123",
-        },
-        {
-          name: "list 3",
-          rank: 3,
-          id: "asd1231",
-        },
-      ],
-      id: "cat1",
-    },
-    {
-      name: "Category 2",
-      data: [
-        {
-          name: "nice 1",
-          rank: 1,
-          id: "sjdf",
-        },
-        {
-          name: "nice 2",
-          rank: 2,
-          id: "8123uij",
-        },
-        {
-          name: "nice 3",
-          rank: 3,
-          id: "1231n",
-        },
-      ],
-      id: "cat2",
-    },
-  ]);
+  const categories = useStore((state) => state.categories);
 
   return (
     <div className="flex px-4 pb-8 items-start overflow-x-auto">
-      {obj.map((q) => {
+      {categories.map((q) => {
         return (
           <div
             className="rounded bg-grey-light  flex-no-shrink w-64 p-2 mr-3"
@@ -66,22 +23,7 @@ const Cards = () => {
               </svg>
             </div>
             <div className="text-sm mt-2">
-              <ReactSortable list={q.data} setList={() => {}} group="shared">
-                {q?.data.map((r) => (
-                  <div
-                    className="bg-white p-2 rounded mt-1 border-b border-grey cursor-pointer hover:bg-grey-lighter"
-                    key={r.id}
-                  >
-                    <input
-                      value={r.name}
-                      onChange={(e) => console.log(e.target.value)}
-                      className="focus:outline-none"
-                      contentEditable
-                      style={{ width: "100px" }}
-                    />
-                  </div>
-                ))}
-              </ReactSortable>
+              <Tasks id={q.id} />
               <p className="mt-3 text-grey-dark">Add a card...</p>
             </div>
           </div>
