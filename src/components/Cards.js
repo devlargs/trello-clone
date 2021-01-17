@@ -1,48 +1,58 @@
-const obj = [
-  {
-    name: "Category 1",
-    data: [
-      {
-        name: "list 1",
-        rank: 1,
-      },
-      {
-        name: "list 2",
-        rank: 2,
-      },
-      {
-        name: "list 3",
-        rank: 3,
-      },
-    ],
-  },
-  {
-    name: "Category 2",
-    data: [
-      {
-        name: "nice 1",
-        rank: 1,
-      },
-      {
-        name: "nice 2",
-        rank: 2,
-      },
-      {
-        name: "nice 3",
-        rank: 3,
-      },
-    ],
-  },
-];
+import { useState } from "react";
 
 const Cards = () => {
+  const [obj] = useState([
+    {
+      name: "Category 1",
+      data: [
+        {
+          name: "list 1",
+          rank: 1,
+          id: "1",
+        },
+        {
+          name: "list 2",
+          rank: 2,
+          id: "123123",
+        },
+        {
+          name: "list 3",
+          rank: 3,
+          id: "asd1231",
+        },
+      ],
+      id: "cat1",
+    },
+    {
+      name: "Category 2",
+      data: [
+        {
+          name: "nice 1",
+          rank: 1,
+          id: "sjdf",
+        },
+        {
+          name: "nice 2",
+          rank: 2,
+          id: "8123uij",
+        },
+        {
+          name: "nice 3",
+          rank: 3,
+          id: "1231n",
+        },
+      ],
+      id: "cat2",
+    },
+  ]);
+
   return (
     <div className="flex px-4 pb-8 items-start overflow-x-auto">
-      {obj.map((q, i) => {
+      {obj.map((q) => {
         return (
           <div
             className="rounded bg-grey-light  flex-no-shrink w-64 p-2 mr-3"
-            key={i}
+            key={q.id}
           >
             <div className="flex justify-between py-1">
               <h3 className="text-sm">{q.name}</h3>
@@ -55,10 +65,10 @@ const Cards = () => {
               </svg>
             </div>
             <div className="text-sm mt-2">
-              {q?.data.map((r, idx) => (
+              {q?.data.map((r) => (
                 <div
                   className="bg-white p-2 rounded mt-1 border-b border-grey cursor-pointer hover:bg-grey-lighter"
-                  key={idx}
+                  key={r.id}
                 >
                   <input
                     value={r.name}
